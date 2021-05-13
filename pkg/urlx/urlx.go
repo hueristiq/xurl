@@ -10,8 +10,8 @@ import (
 type URL struct {
 	// scheme, user (username & password), host (host or host:Port), path, query, fragment
 	*url.URL
-	// Host (e.g. sub.example.com), RootDomain (e.g. example), SubDOmain (e.g. sub), TLD (e.g. com), Port (e.g. 80)
-	Domain, RootDomain, SubDomain, TLD, Port string
+	// Domain (e.g. sub.example.com), SubDOmain (e.g. sub), ETLDPlus1 (e.g. example.com), RootDomain (e.g. example), TLD (e.g. com), Port (e.g. 80)
+	Domain, SubDomain, ETLDPlus1, RootDomain, TLD, Port string
 }
 
 func Parse(rawURL string) (parsedURL *URL, err error) {
@@ -32,16 +32,16 @@ func Parse(rawURL string) (parsedURL *URL, err error) {
 		}
 	}
 
-	etldPlus1, err := publicsuffix.EffectiveTLDPlusOne(parsedURL.Domain)
+	parsedURL.ETLDPlus1, err = publicsuffix.EffectiveTLDPlusOne(parsedURL.Domain)
 	if err != nil {
-		return nil, err
+		return
 	}
 
-	i := strings.Index(etldPlus1, ".")
-	parsedURL.RootDomain = etldPlus1[0:i]
-	parsedURL.TLD = etldPlus1[i+1:]
+	i := strings.Index(parsedURL.ETLDPlus1, ".")
+	parsedURL.RootDomain = parsedURL.ETLDPlus1[0:i]
+	parsedURL.TLD = parsedURL.ETLDPlus1[i+1:]
 
-	if rest := strings.TrimSuffix(parsedURL.Domain, "."+etldPlus1); rest != parsedURL.Domain {
+	if rest := strings.TrimSuffix(parsedURL.Domain, "."+parsedURL.ETLDPlus1); rest != parsedURL.Domain {
 		parsedURL.SubDomain = rest
 	}
 
