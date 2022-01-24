@@ -10,11 +10,21 @@ import (
 type URL struct {
 	// scheme, user (username & password), host (host or host:Port), path, query, fragment
 	*url.URL
-	// Domain (e.g. sub.example.com), SubDOmain (e.g. sub), ETLDPlus1 (e.g. example.com), RootDomain (e.g. example), TLD (e.g. com), Port (e.g. 80)
-	Domain, SubDomain, ETLDPlus1, RootDomain, TLD, Port string
+	Domain     string // e.g. sub.example.com
+	ETLDPlus1  string // example.com
+	SubDomain  string // e.g. sub
+	RootDomain string // example
+	TLD        string // com
+	Port       string // 80
 }
 
-func Parse(rawURL string) (parsedURL *URL, err error) {
+func Parse(rawURL string) (*URL, error) {
+	return ParseWithDefaultScheme(rawURL, "http")
+}
+
+func ParseWithDefaultScheme(rawURL string, scheme string) (parsedURL *URL, err error) {
+	rawURL = defaultScheme(rawURL, scheme)
+
 	parsedURL = &URL{}
 
 	parsedURL.URL, err = url.Parse(rawURL)
