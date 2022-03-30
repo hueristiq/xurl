@@ -7,9 +7,9 @@ A [go(golang)](http://golang.org/) utility for URLs parsing & pull out bits of t
 ## Resources
 
 * [Installation](#installation)
-    * [From Binary](#from-binary)
-    * [From source](#from-source)
-    * [From github](#from-github)
+	* [From Binary](#from-binary)
+	* [From source](#from-source)
+	* [From github](#from-github)
 * [Usage](#usage)
 * [Credits](#credits)
 * [Contribution](#contribution)
