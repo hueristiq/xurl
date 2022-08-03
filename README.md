@@ -22,10 +22,10 @@ You can download the pre-built binary for your platform from this repository's [
 
 #### From Source
 
-urlx requires **go1.14+** to install successfully. Run the following command to get the repo
+urlx requires **go1.17+** to install successfully. Run the following command to get the repo
 
 ```bash
-GO111MODULE=on go get -u -v github.com/hueristiq/urlx/cmd/urlx
+go install -v github.com/hueristiq/urlx/cmd/urlx
 ```
 
 #### From Github
