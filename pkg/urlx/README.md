@@ -12,7 +12,7 @@ A [Golang](http://golang.org/) pkg for URL parsing and normalization.
 <table>
 <thead>
 <tr>
-<th><a href="https://godoc.org/github.com/enenumxela/urlx#Parse">github.com/enenumxela/urlx</a></th>
+<th><a href="https://godoc.org/github.com/hueristiq/urlx#Parse">github.com/hueristiq/urlx</a></th>
 <th><a href="https://golang.org/pkg/net/url/#Parse">net/url</a></th>
 </tr>
 </thead>
@@ -97,7 +97,7 @@ url.Parse("user.local:8000/path")
 ### Usage
 
 ```go
-import "github.com/enenumxela/urlx/pkg/urlx"
+import "github.com/hueristiq/urlx/pkg/urlx"
 
 func main() {
     url, _ := urlx.Parse("example.com")
@@ -111,12 +111,12 @@ func main() {
 
 ## Normalizing URL
 
-The [urlx.Normalize()](https://godoc.org/github.com/enenumxela/urlx#Normalize) function normalizes the URL using the predefined subset of [Purell](https://github.com/PuerkitoBio/purell) flags.
+The [urlx.Normalize()](https://godoc.org/github.com/hueristiq/urlx#Normalize) function normalizes the URL using the predefined subset of [Purell](https://github.com/PuerkitoBio/purell) flags.
 
 ### Usage
 
 ```go
-import "github.com/enenumxela/urlx"
+import "github.com/hueristiq/urlx"
 
 func main() {
     url, _ := urlx.Parse("localhost:80///x///y/z/../././index.html?b=y&a=x#t=20")

@@ -3,7 +3,7 @@ package urlx_test
 import (
 	"testing"
 
-	"github.com/enenumxela/urlx/pkg/urlx"
+	"github.com/hueristiq/urlx/pkg/urlx"
 )
 
 func TestDefaultScheme(t *testing.T) {

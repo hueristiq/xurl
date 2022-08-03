@@ -1,6 +1,6 @@
 # urlx
 
-![made with go](https://img.shields.io/badge/made%20with-Go-0040ff.svg) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-0040ff.svg) [![open issues](https://img.shields.io/github/issues-raw/enenumxela/urlx.svg?style=flat&color=0040ff)](https://github.com/enenumxela/urlx/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/enenumxela/urlx.svg?style=flat&color=0040ff)](https://github.com/enenumxela/urlx/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/License-MIT-gray.svg?colorB=0040FF)](https://github.com/enenumxela/urlx/blob/master/LICENSE) [![twitter](https://img.shields.io/badge/twitter-@enenumxela-0040ff.svg)](https://twitter.com/enenumxela)
+![made with go](https://img.shields.io/badge/made%20with-Go-0040ff.svg) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-0040ff.svg) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/urlx.svg?style=flat&color=0040ff)](https://github.com/hueristiq/urlx/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/urlx.svg?style=flat&color=0040ff)](https://github.com/hueristiq/urlx/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/License-MIT-gray.svg?colorB=0040FF)](https://github.com/hueristiq/urlx/blob/master/LICENSE) [![twitter](https://img.shields.io/badge/twitter-@itshueristiq-0040ff.svg)](https://twitter.com/itshueristiq)
 
 A [go(golang)](http://golang.org/) utility for URLs parsing & pull out bits of the URLS.
 
@@ -18,20 +18,20 @@ A [go(golang)](http://golang.org/) utility for URLs parsing & pull out bits of t
 
 #### From Binary
 
-You can download the pre-built binary for your platform from this repository's [releases](https://github.com/enenumxela/urlx/releases/) page, extract, then move it to your `$PATH`and you're ready to go.
+You can download the pre-built binary for your platform from this repository's [releases](https://github.com/hueristiq/urlx/releases/) page, extract, then move it to your `$PATH`and you're ready to go.
 
 #### From Source
 
 urlx requires **go1.14+** to install successfully. Run the following command to get the repo
 
 ```bash
-GO111MODULE=on go get -u -v github.com/enenumxela/urlx/cmd/urlx
+GO111MODULE=on go get -u -v github.com/hueristiq/urlx/cmd/urlx
 ```
 
 #### From Github
 
 ```bash
-git clone https://github.com/enenumxela/urlx.git && \
+git clone https://github.com/hueristiq/urlx.git && \
 cd urlx/cmd/urlx/ && \
 go build && \
 mv urlx /usr/local/bin/ && \
@@ -192,4 +192,4 @@ EXAMPLES:
 All credits to [Tom Hudson](https://github.com/tomnomnom), i took the initial code from his [unfurl](https://github.com/tomnomnom/unfurl).
 ## Contibution
 
-[Issues](https://github.com/enenumxela/urlx/issues) and [Pull Requests](https://github.com/enenumxela/urlx/pulls) are welcome! 
+[Issues](https://github.com/hueristiq/urlx/issues) and [Pull Requests](https://github.com/hueristiq/urlx/pulls) are welcome! 

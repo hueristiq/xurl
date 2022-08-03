@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/enenumxela/urlx/pkg/urlx"
+	"github.com/hueristiq/urlx/pkg/urlx"
 	"github.com/logrusorgru/aurora/v3"
 )
 
