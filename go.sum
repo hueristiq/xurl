@@ -1,3 +1,5 @@
+github.com/hueristiq/url v0.0.0-20220804093805-5ca3562ceccd h1:jxn9nInf/VhfwoykQWgBD6Em+0LgzsbOVx4bAQjkC8A=
+github.com/hueristiq/url v0.0.0-20220804093805-5ca3562ceccd/go.mod h1:d1KLodOX5JbLj+7Mxf86YXM/5zHJ/ufmI1glC5iuBUE=
 github.com/logrusorgru/aurora/v3 v3.0.0 h1:R6zcoZZbvVcGMvDCKo45A9U/lzYyzl5NfYIvznmDfE4=
 github.com/logrusorgru/aurora/v3 v3.0.0/go.mod h1:vsR12bk5grlLvLXAYrBsb5Oc/N+LxAlxggSjiwMnCUc=
 golang.org/x/net v0.0.0-20220802222814-0bcc04d9c69b h1:3ogNYyK4oIQdIKzTu68hQrr4iuVxF3AxKl9Aj/eDrw0=

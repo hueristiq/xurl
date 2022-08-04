@@ -24,4 +24,4 @@ jobs:
             -
                 name: Build
                 run: go build -v .
-                working-directory: ./cmd/urlx
+                working-directory: ./cmd/hqurl

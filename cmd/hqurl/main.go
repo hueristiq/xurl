@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/hueristiq/urlx/pkg/urlx"
+	"github.com/hueristiq/url"
 	"github.com/logrusorgru/aurora/v3"
 )
 
@@ -28,11 +28,12 @@ var (
 
 func banner() {
 	fmt.Fprintln(os.Stderr, aurora.BrightBlue(`
-            _
- _   _ _ __| |_  __
-| | | | '__| \ \/ /
-| |_| | |  | |>  < 
- \__,_|_|  |_/_/\_\ v1.0.0
+ _                      _ 
+| |__   __ _ _   _ _ __| |
+| '_ \ / _`+"`"+` | | | | '__| |
+| | | | (_| | |_| | |  | |
+|_| |_|\__, |\__,_|_|  |_| v1.0.0
+          |_|             
 `).Bold())
 }
 
@@ -46,7 +47,7 @@ func init() {
 		banner()
 
 		h := "USAGE:\n"
-		h += "  urlx [OPTIONS] [MODE] [FORMATSTRING]\n\n"
+		h += "  hqurl [OPTIONS] [MODE] [FORMATSTRING]\n\n"
 
 		h += "GENERAL OPTIONS:\n"
 		h += "  -i                input file\n"
@@ -80,8 +81,8 @@ func init() {
 		h += "  %a                authority (alias for %u%@%d%:%P)\n\n"
 
 		h += "EXAMPLES:\n"
-		h += "  cat urls.txt | urlx keys\n"
-		h += "  cat urls.txt | urlx format %s://%h%p?%q\n"
+		h += "  cat urls.txt | hqurl keys\n"
+		h += "  cat urls.txt | hqurl format %s://%h%p?%q\n"
 
 		fmt.Fprint(os.Stderr, h)
 	}
@@ -99,12 +100,12 @@ func init() {
 // function to return a slice of length 1, but the return
 // type remains a slice because *some* functions need to
 // return multiple strings; e.g. the keys function.
-type urlProc func(*urlx.URL, string) []string
+type urlProc func(*url.URL, string) []string
 
 // keys returns all of the keys used in the query string
 // portion of the URL. E.g. for /?one=1&two=2&three=3 it
 // will return []string{"one", "two", "three"}
-func keys(u *urlx.URL, _ string) []string {
+func keys(u *url.URL, _ string) []string {
 	out := make([]string, 0)
 	for key := range u.Query() {
 		out = append(out, key)
@@ -115,7 +116,7 @@ func keys(u *urlx.URL, _ string) []string {
 // values returns all of the values in the query string
 // portion of the URL. E.g. for /?one=1&two=2&three=3 it
 // will return []string{"1", "2", "3"}
-func values(u *urlx.URL, _ string) []string {
+func values(u *url.URL, _ string) []string {
 	out := make([]string, 0)
 	for _, vals := range u.Query() {
 		for _, val := range vals {
@@ -129,7 +130,7 @@ func values(u *urlx.URL, _ string) []string {
 // the query string portion of the URL. E.g for
 // /?one=1&two=2&three=3 it will return
 // []string{"one=1", "two=2", "three=3"}
-func keyPairs(u *urlx.URL, _ string) []string {
+func keyPairs(u *url.URL, _ string) []string {
 	out := make([]string, 0)
 	for key, vals := range u.Query() {
 		for _, val := range vals {
@@ -142,14 +143,14 @@ func keyPairs(u *urlx.URL, _ string) []string {
 // hostnames returns the domain portion of the URL. e.g.
 // for http://sub.example.com/path it will return
 // []string{"sub.example.com"}
-func hostnames(u *urlx.URL, f string) []string {
+func hostnames(u *url.URL, f string) []string {
 	return format(u, "%h")
 }
 
 // domains returns the path portion of the URL. e.g.
 // for http://sub.example.com/path it will return
 // []string{"/path"}
-func paths(u *urlx.URL, f string) []string {
+func paths(u *url.URL, f string) []string {
 	return format(u, "%p")
 }
 
@@ -158,7 +159,7 @@ func paths(u *urlx.URL, f string) []string {
 // based on the URL and the format string. e.g. for
 // http://example.com/path and format string "%d%p"
 // it will return example.com/path
-func format(u *urlx.URL, f string) []string {
+func format(u *url.URL, f string) []string {
 	out := &bytes.Buffer{}
 
 	inFormat := false
@@ -304,7 +305,7 @@ func main() {
 	}
 
 	for scanner.Scan() {
-		parsedURL, err := urlx.Parse(scanner.Text())
+		parsedURL, err := url.Parse(url.Options{URL: scanner.Text()})
 		if err != nil {
 			if co.verbose {
 				fmt.Fprintf(os.Stderr, "parse failure: %s\n", err)

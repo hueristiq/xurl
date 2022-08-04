@@ -1,7 +1,7 @@
 builds:
     -
-        binary: urlx
-        main: cmd/urlx/main.go
+        binary: hqurl
+        main: cmd/hqurl/main.go
         goos:
             - linux
             - windows
