@@ -12,13 +12,14 @@
 		* [`go install ...`](#go-install)
 		* [`go build ...` the development Version](#go-build--the-development-version)
 * [Usage](#usage)
-	* [Domains](#domains)
-	* [Apex Domains](#apex-domains)
-	* [Paths](#paths)
-	* [Query String Key/Value Pairs](#query-string-keyvalue-pairs)
-	* [Query String Keys (Parameters)](#query-string-keys-parameters)
-	* [Query String Values](#query-string-values)
-	* [Custom Formats](#custom-formats)
+	* [Examples](#examples)
+		* [Domains](#domains)
+		* [Apex Domains](#apex-domains)
+		* [Paths](#paths)
+		* [Query String Key/Value Pairs](#query-string-keyvalue-pairs)
+		* [Query String Keys (Parameters)](#query-string-keys-parameters)
+		* [Query String Values](#query-string-values)
+		* [Custom Formats](#custom-formats)
 * [Credits](#credits)
 * [Contribution](#contribution)
 * [Licensing](#licensing)
@@ -99,7 +100,6 @@ go install -v github.com/hueristiq/xurl/cmd/xurl@latest
 
 **NOTE:** While the development version is a good way to take a peek at `xurl`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
 
-
 ## Usage
 
 To display help message for xurl use the `-h` flag:
@@ -129,7 +129,6 @@ OUTPUT:
   -m, --monochrome  disable output content coloring
   -u, --unique      output unique values
   -v, --verbosity   debug, info, warning, error, fatal or silent (default: info)
-
 
 MODE:
   domains           the hostname (e.g. sub.example.com)
@@ -164,17 +163,17 @@ EXAMPLES:
   cat urls.txt | xurl format %s://%h%p?%q -i -
 ```
 
-xurl works with URLs provided on stdin; they might come from a file like `urls.txt`:
+### Examples
 
 ```
-$ cat example-urls.txt
+$ cat urls.txt
 
 https://sub.example.com/users?id=123&name=Sam
 https://sub.example.com/orgs?org=ExCo#about
 http://example.net/about#contact
 ```
 
-### Domains
+#### Domains
 
 You can extract the domains from the URLs with the `domains` mode:
 
@@ -196,7 +195,7 @@ If you don't want to output duplicate values you can use the `-u` or `--unique` 
 
 The `-u`/`--unique` flag works for all modes.
 
-### Apex Domains
+#### Apex Domains
 
 You can extract the apex part of the domain (e.g. the `example.com` in `http://sub.example.com`) using the `apexes` mode:
 
@@ -206,7 +205,7 @@ example.com
 example.net
 ```
 
-### Paths
+#### Paths
 
 ```
 $ cat urls.txt | xurl paths -i -
@@ -216,7 +215,7 @@ $ cat urls.txt | xurl paths -i -
 /about
 ```
 
-### Query String Key/Value Pairs
+#### Query String Key/Value Pairs
 
 ```
 $ cat urls.txt | xurl query -i -
@@ -226,7 +225,7 @@ name=Sam
 org=ExCo
 ```
 
-### Query String Keys (Parameters)
+#### Query String Keys (Parameters)
 
 ```
 $ cat urls.txt | xurl params -i -
@@ -236,7 +235,7 @@ name
 org
 ```
 
-### Query String Values
+#### Query String Values
 
 ```
 $ cat urls.txt | xurl values -i -
@@ -246,7 +245,7 @@ Sam
 ExCo
 ```
 
-### Custom Formats
+#### Custom Formats
 
 You can use the `format` mode to specify a custom output format:
 

@@ -21,7 +21,8 @@ __  ___   _ _ __| |
  >  <| |_| | |  | |
 /_/\_\\__,_|_|  |_| %s
 
-%s`).Bold(),
+%s
+`).Bold(),
 		aurora.BrightYellow("v"+VERSION).Bold(),
 		aurora.BrightGreen(DESCRIPTION).Italic(),
 	)

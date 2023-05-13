@@ -28,6 +28,7 @@ var (
 )
 
 func init() {
+	// parse flags
 	pflag.StringVarP(&input, "input", "i", "", "")
 	pflag.BoolVarP(&unique, "unique", "u", false, "")
 	pflag.BoolVarP(&monochrome, "monochrome", "m", false, "")
@@ -37,7 +38,7 @@ func init() {
 	pflag.Usage = func() {
 		fmt.Fprintln(os.Stderr, configuration.BANNER)
 
-		h := "\nUSAGE:\n"
+		h := "USAGE:\n"
 		h += "  xurl [MODE] [FORMATSTRING] [OPTIONS]\n"
 
 		h += "\nINPUT:\n"
@@ -46,7 +47,7 @@ func init() {
 		h += "\nOUTPUT:\n"
 		h += "  -m, --monochrome  disable output content coloring\n"
 		h += "  -u, --unique      output unique values\n"
-		h += fmt.Sprintf("  -v, --verbosity   debug, info, warning, error, fatal or silent (default: %s)\n\n", string(levels.LevelInfo))
+		h += fmt.Sprintf("  -v, --verbosity   debug, info, warning, error, fatal or silent (default: %s)\n", string(levels.LevelInfo))
 
 		h += "\nMODE:\n"
 		h += "  domains           the hostname (e.g. sub.example.com)\n"
@@ -55,9 +56,9 @@ func init() {
 		h += "  query             `key=value` pairs from the query string (one per line)\n"
 		h += "  params            keys from the query string (one per line)\n"
 		h += "  values            values from the query string (one per line)\n"
-		h += "  format            custom format (see below)\n\n"
+		h += "  format            custom format (see below)\n"
 
-		h += "FORMAT DIRECTIVES:\n"
+		h += "\nFORMAT DIRECTIVES:\n"
 		h += "  %%                a literal percent character\n"
 		h += "  %s                the request scheme (e.g. https)\n"
 		h += "  %u                the user info (e.g. user:pass)\n"
@@ -88,6 +89,7 @@ func init() {
 	mode = pflag.Arg(0)
 	fmtStr = pflag.Arg(1)
 
+	// initialize logger
 	hqlog.DefaultLogger.SetMaxLevel(levels.LevelStr(verbosity))
 	hqlog.DefaultLogger.SetFormatter(formatter.NewCLI(&formatter.CLIOptions{
 		Colorize: !monochrome,
