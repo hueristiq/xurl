@@ -3,6 +3,7 @@ package processor
 import (
 	"bytes"
 	"fmt"
+	"strings"
 
 	hqurl "github.com/hueristiq/hqgoutils/url"
 )
@@ -68,6 +69,21 @@ func Format(u *hqurl.URL, f string) []string {
 		// the path; e.g. /users
 		case 'p':
 			out.WriteString(u.EscapedPath())
+
+		// the paths's file extension
+		case 'e':
+			paths := strings.Split(u.EscapedPath(), "/")
+			if len(paths) > 1 {
+				parts := strings.Split(paths[len(paths)-1], ".")
+				if len(parts) > 1 {
+					out.WriteString(parts[len(parts)-1])
+				}
+			} else {
+				parts := strings.Split(u.EscapedPath(), ".")
+				if len(parts) > 1 {
+					out.WriteString(parts[len(parts)-1])
+				}
+			}
 
 		// the query string; e.g. one=1&two=2
 		case 'q':

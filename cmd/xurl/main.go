@@ -38,10 +38,10 @@ func init() {
 		fmt.Fprintln(os.Stderr, configuration.BANNER)
 
 		h := "\nUSAGE:\n"
-		h += "  xurl [OPTIONS] [MODE] [FORMATSTRING]\n"
+		h += "  xurl [MODE] [FORMATSTRING] [OPTIONS]\n"
 
 		h += "\nINPUT:\n"
-		h += "  -i, --input       input file\n"
+		h += "  -i, --input       input file (use `-` to get from stdin)\n"
 
 		h += "\nOUTPUT:\n"
 		h += "  -m, --monochrome  disable output content coloring\n"
@@ -77,8 +77,8 @@ func init() {
 		h += "  %a                authority (alias for %u%@%d%:%P)\n\n"
 
 		h += "EXAMPLES:\n"
-		h += "  cat urls.txt | xurl keys\n"
-		h += "  cat urls.txt | xurl format %s://%h%p?%q\n"
+		h += "  cat urls.txt | xurl params -i -\n"
+		h += "  cat urls.txt | xurl format %s://%h%p?%q -i -\n"
 
 		fmt.Fprint(os.Stderr, h)
 	}
