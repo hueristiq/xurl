@@ -1,6 +1,6 @@
-# hqurl
+# xurl
 
-![made with go](https://img.shields.io/badge/made%20with-Go-0040ff.svg) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-0040ff.svg) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/hqurl.svg?style=flat&color=0040ff)](https://github.com/hueristiq/hqurl/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/hqurl.svg?style=flat&color=0040ff)](https://github.com/hueristiq/hqurl/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/License-MIT-gray.svg?colorB=0040FF)](https://github.com/hueristiq/hqurl/blob/master/LICENSE) [![twitter](https://img.shields.io/badge/twitter-@itshueristiq-0040ff.svg)](https://twitter.com/itshueristiq)
+![made with go](https://img.shields.io/badge/made%20with-Go-0040ff.svg) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-0040ff.svg) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xurl.svg?style=flat&color=0040ff)](https://github.com/hueristiq/xurl/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xurl.svg?style=flat&color=0040ff)](https://github.com/hueristiq/xurl/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/License-MIT-gray.svg?colorB=0040FF)](https://github.com/hueristiq/xurl/blob/master/LICENSE) [![twitter](https://img.shields.io/badge/twitter-@itshueristiq-0040ff.svg)](https://twitter.com/itshueristiq)
 
 A [go(golang)](http://golang.org/) utility for URLs parsing & pull out bits of the URLS.
 
@@ -18,29 +18,29 @@ A [go(golang)](http://golang.org/) utility for URLs parsing & pull out bits of t
 
 #### From Binary
 
-You can download the pre-built binary for your platform from this repository's [releases](https://github.com/hueristiq/hqurl/releases/) page, extract, then move it to your `$PATH`and you're ready to go.
+You can download the pre-built binary for your platform from this repository's [releases](https://github.com/hueristiq/xurl/releases/) page, extract, then move it to your `$PATH`and you're ready to go.
 
 #### From Source
 
-hqurl requires **go1.17+** to install successfully. Run the following command to get the repo
+xurl requires **go1.17+** to install successfully. Run the following command to get the repo
 
 ```bash
-go install -v github.com/hueristiq/hqurl/cmd/hqurl
+go install -v github.com/hueristiq/xurl/cmd/xurl
 ```
 
 #### From Github
 
 ```bash
-git clone https://github.com/hueristiq/hqurl.git && \
-cd hqurl/cmd/hqurl/ && \
+git clone https://github.com/hueristiq/xurl.git && \
+cd xurl/cmd/xurl/ && \
 go build && \
-mv hqurl /usr/local/bin/ && \
-hqurl -h
+mv xurl /usr/local/bin/ && \
+xurl -h
 ```
 
 ## Usage
 
-hqurl works with URLs provided on stdin; they might come from a file like `urls.txt`:
+xurl works with URLs provided on stdin; they might come from a file like `urls.txt`:
 
 ```
 $ cat example-urls.txt
@@ -55,7 +55,7 @@ You can extract:
 * Hostnames from the URLs with the `hostnames` mode:
 
     ```
-    $ cat urls.txt | hqurl hostnames
+    $ cat urls.txt | xurl hostnames
 
     sub.example.com
     sub.example.com
@@ -65,7 +65,7 @@ You can extract:
 * Paths, with the `paths` mode:
 
     ```
-    $ cat urls.txt | hqurl paths
+    $ cat urls.txt | xurl paths
 
     /users
     /orgs
@@ -75,7 +75,7 @@ You can extract:
 * Query String Keys, with the `keys` mode:
 
     ```
-    $ cat urls.txt | hqurl keys
+    $ cat urls.txt | xurl keys
 
     id
     name
@@ -85,7 +85,7 @@ You can extract:
 * Query String Values, with the `values` mode:
 
     ```
-    $ cat urls.txt | hqurl values
+    $ cat urls.txt | xurl values
 
     123
     Sam
@@ -95,7 +95,7 @@ You can extract:
 * Query String Key/Value Pairs , with the `keypairs` mode:
 
     ```
-    $ cat urls.txt | hqurl keypairs
+    $ cat urls.txt | xurl keypairs
 
     id=123
     name=Sam
@@ -106,19 +106,19 @@ You can extract:
 * **NOTE:** You can use the `format` mode to specify a custom output format:
 
     ```
-    $ cat urls.txt | hqurl format %d%p
+    $ cat urls.txt | xurl format %d%p
 
     sub.example.com/users
     sub.example.com/orgs
     example.net/about
     ```
 
-    > For more format directives, checkout the help message `hqurl -h` under `Format Directives`. 
+    > For more format directives, checkout the help message `xurl -h` under `Format Directives`. 
     
     Any characters that don't match a format directive remain untouched:
 
     ```
-    $ cat urls.txt | hqurl -u format "%d (%s)"
+    $ cat urls.txt | xurl -u format "%d (%s)"
 
     sub.example.com (https)
     example.net (http)
@@ -127,16 +127,16 @@ You can extract:
 **Note** that if a URL does not include the data requested, there will be no output for that URL:
 
 ```
-$ echo http://example.com | hqurl format "%P"
+$ echo http://example.com | xurl format "%P"
 
-$ echo http://example.com:8080 | hqurl format "%P"
+$ echo http://example.com:8080 | xurl format "%P"
 8080
 ```
 
-To display help message for hqurl use the `-h` flag:
+To display help message for xurl use the `-h` flag:
 
 ```bash
-$ hqurl -h
+$ xurl -h
 ```
 
 help message:
@@ -149,7 +149,7 @@ help message:
  \__,_|_|  |_/_/\_\ v1.0.0
 
 USAGE:
-  hqurl [OPTIONS] [MODE] [FORMATSTRING]
+  xurl [OPTIONS] [MODE] [FORMATSTRING]
 
 GENERAL OPTIONS:
   -i                input file
@@ -183,8 +183,8 @@ FORMAT DIRECTIVES:
   %a                authority (alias for %u%@%d%:%P)
 
 EXAMPLES:
-  cat urls.txt | hqurl keys
-  cat urls.txt | hqurl format %s://%h%p?%q
+  cat urls.txt | xurl keys
+  cat urls.txt | xurl format %s://%h%p?%q
 ```
 
 ## Credits
@@ -192,4 +192,4 @@ EXAMPLES:
 All credits to [Tom Hudson](https://github.com/tomnomnom), i took the initial code from his [unfurl](https://github.com/tomnomnom/unfurl).
 ## Contibution
 
-[Issues](https://github.com/hueristiq/hqurl/issues) and [Pull Requests](https://github.com/hueristiq/hqurl/pulls) are welcome! 
+[Issues](https://github.com/hueristiq/xurl/issues) and [Pull Requests](https://github.com/hueristiq/xurl/pulls) are welcome! 
